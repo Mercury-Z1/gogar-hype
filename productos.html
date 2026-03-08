@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gogar Hype - Product Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .filter {
+            margin-bottom: 20px;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .product {
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 200px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gogar Hype - Product Gallery</h1>
+    
+    <div class="filter">
+        <label for="category">Filter by category:</label>
+        <select id="category" onchange="filterProducts()">
+            <option value="all">All</option>
+            <option value="category1">Category 1</option>
+            <option value="category2">Category 2</option>
+        </select>
+    </div>
+    
+    <div class="gallery" id="productGallery">
+        <div class="product" data-category="category1">
+            <h2>Product 1</h2>
+            <p>Description of Product 1</p>
+        </div>
+        <div class="product" data-category="category2">
+            <h2>Product 2</h2>
+            <p>Description of Product 2</p>
+        </div>
+        <!-- Add more products as needed -->
+    </div>
+
+    <script>
+        function filterProducts() {
+            const category = document.getElementById("category").value;
+            const products = document.querySelectorAll(".product");
+            products.forEach(product => {
+                if (category === "all" || product.dataset.category === category) {
+                    product.style.display = "block";
+                } else {
+                    product.style.display = "none";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
